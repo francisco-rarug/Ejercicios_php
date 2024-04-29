@@ -1,6 +1,6 @@
 <?php
 
-    include_once("auto.php");
+    include_once("Ejercicio19.php");
     class Garaje{
         private $_razonSocial;
         private $_precioPorHora;

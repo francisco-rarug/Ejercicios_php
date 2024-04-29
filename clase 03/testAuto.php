@@ -1,5 +1,5 @@
 <?php
-    include_once("Ejercicio17.php");
+    include_once("Ejercicio19.php");
     $fecha = new DateTime();
     $auto =new Auto("Ferrari", "rojo");
     $auto2 = new Auto("Ferrari","rojo");
@@ -39,6 +39,12 @@
         echo "<br>";
     }
 
-    
+    $auto->guardarAutoEnCSV("Autos.csv");
+    $auto2->guardarAutoEnCSV("Autos.csv");
+    $auto3->guardarAutoEnCSV("Autos.csv");
+    $auto4->guardarAutoEnCSV("Autos.csv");
+    $auto5->guardarAutoEnCSV("Autos.csv");
+
+    $autosDesdeCSV = $auto->leerAutosDesdeCSV("Autos.csv");
     
 ?>
