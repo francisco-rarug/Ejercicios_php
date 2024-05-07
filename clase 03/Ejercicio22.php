@@ -22,6 +22,19 @@ class Usuario{
         return $this->_mail;
     }
 
+
+    public function verificarUsuario($clave, $mail){
+        if ($mail === $this->_mail) {
+            if ($clave === $this->_clave) {
+                return "Verificado";
+            } else {
+                return "Error en los datos";
+            }
+        } else {
+            return "Usuario no registrado";
+        }
+    }
+
     public static function CargarDesdeCSV(){
         $usuarios = [];
 
@@ -42,11 +55,24 @@ class Usuario{
 }
 
 
-$listaUsuarios = Usuario::CargarDesdeCSV();
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["clave"]) && isset($_POST["mail"])) {
 
-echo "Lista de Usuarios:";
+    $clave = $_POST["clave"];
+    $mail = $_POST["mail"];
 
-foreach ($listaUsuarios as $usuario) {
-    echo "{$usuario->getNombre()} - {$usuario->getClave()} - {$usuario->getMail()}";
+    $listaUsuarios = Usuario::CargarDesdeCSV();
+
+    $usuarioEncontrado = false;
+    $mensaje = "Usuario no registrado";
+
+    foreach ($listaUsuarios as $usuario) {
+        if ($usuario->getMail() === $mail) {
+            $usuarioEncontrado = true;
+            $mensaje = $usuario->verificarUsuario($clave, $mail);
+            break;
+        }
+    }
+
+    echo $mensaje;
 }
 ?>
