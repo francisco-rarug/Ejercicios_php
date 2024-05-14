@@ -1,0 +1,16 @@
+[
+    {
+        "sabor": "menta",
+        "precio": "7001",
+        "tipo": "crema",
+        "vaso": "cucurucho",
+        "stock": 15
+    },
+    {
+        "sabor": "frutilla",
+        "precio": "7001",
+        "tipo": "crema",
+        "vaso": "cucurucho",
+        "stock": "5"
+    }
+]
