@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")  {
 }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
     if($_GET ["option"] == "ConsultasVentas"){
         include_once("ConsultasVentas.php");
-        ConsultasVentas::VentasHelados($_GET["valor"], $_GET["fecha"]);
+        ConsultasVentas::VentasHelados($_GET["valor"], $_GET["fecha"], $_GET["fecha2"]);
     }
 }
 
