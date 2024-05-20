@@ -72,15 +72,16 @@ class AltaVenta{
                 $descuentos = json_decode(file_get_contents("cupones.json"), true);
                 $bandera = true;
                 foreach($descuentos as $descuento){
-                    if ($descuento['idDevolucion']==$_POST['cupon']) {
+                    if ($descuento['idDevolucion']==$_POST['cupon'] && $descuento['estado'] == 'no usado') {
                     $bandera = false;
                     $porcentajeDescuento = $descuento['descuento'];
                     $descuento['estado']='usado';
+                    echo $descuento['estado'];
+                    
                     }
                 }
                 if ($bandera == false) {
-                    $descuentoNuevo[] = $descuentos;
-                    file_put_contents("cupones.json", json_encode($descuentoNuevo));
+                    file_put_contents("cupones.json", json_encode($descuentos));
                     return $porcentajeDescuento;
                 }else{
                     echo 'cupon no valido';
